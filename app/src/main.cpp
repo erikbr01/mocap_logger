@@ -22,11 +22,14 @@ mocap_sub.init();
 
 for(;;) {
     mocap_sub.listener.wait_for_data();
-    std::cout << "Timestamp: " << sub::st.pose().header().timestamp() << std::endl;
+
+    std::cout << "Timestamp: " << sub::st.header().timestamp() << std::endl;
+
     std::cout << "x: " << sub::st.pose().position().x() << std::endl;
      std::cout << "y: " << sub::st.pose().position().y() << std::endl;
     std::cout << "z: " << sub::st.pose().position().z() << std::endl;
 
+    std::cout << std::endl;
 
 }
 
