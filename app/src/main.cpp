@@ -13,7 +13,7 @@ int main() {
 DefaultParticipant dp(0, "mocap_subscriber");
 
 // Create publisher with msg type
-DDSSubscriber mocap_sub(MocapPubSubType(), "mocap_pose", dp.participant());
+DDSSubscriber mocap_sub(idl_msg::MocapPubSubType(), "mocap_pose", dp.participant());
 
 
 // Initalize mocap_publisher
@@ -23,11 +23,11 @@ mocap_sub.init();
 for(;;) {
     mocap_sub.listener.wait_for_data();
 
-    std::cout << "Timestamp: " << sub::st.header().timestamp() << std::endl;
+    std::cout << "Timestamp: " << sub::mocap_msg.header.timestamp << std::endl;
 
-    std::cout << "x: " << sub::st.pose().position().x() << std::endl;
-     std::cout << "y: " << sub::st.pose().position().y() << std::endl;
-    std::cout << "z: " << sub::st.pose().position().z() << std::endl;
+    std::cout << "x: " << sub::mocap_msg.pose.position.x << std::endl;
+     std::cout << "y: " << sub::mocap_msg.pose.position.y << std::endl;
+    std::cout << "z: " << sub::mocap_msg.pose.position.z << std::endl;
 
     std::cout << std::endl;
 
